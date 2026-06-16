@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../data/productsAsync";
+import { useCart } from "../context/CartContext";
 import ItemCount from "./ItemCount";
 
 const ItemDetailContainer = () => {
   const { itemId } = useParams();
+  const { addItem } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -21,6 +24,11 @@ const ItemDetailContainer = () => {
         setLoading(false);
       });
   }, [itemId]);
+
+  const handleAddToCart = (quantity) => {
+    addItem(product, quantity);
+    setAddedToCart(true);
+  };
 
   if (loading) {
     return <div className="loading-spinner">Cargando producto...</div>;
@@ -49,7 +57,14 @@ const ItemDetailContainer = () => {
           <p className="item-detail-stock">
             Stock disponible: {product.stock} unidades
           </p>
-          <ItemCount stock={product.stock} initial={1} />
+          {addedToCart ? (
+            <div className="added-to-cart-msg">
+              <p>? Agregado al carrito</p>
+              <Link to="/" className="back-link">Seguir comprando</Link>
+            </div>
+          ) : (
+            <ItemCount stock={product.stock} initial={1} onAdd={handleAddToCart} />
+          )}
           <Link to="/" className="back-link">{'<-'} Volver al catalogo</Link>
         </div>
       </div>
