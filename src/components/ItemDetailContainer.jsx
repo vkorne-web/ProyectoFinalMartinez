@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    getProductById(Number(itemId))
+    getProductById(itemId)
       .then((data) => {
         setProduct(data);
       })

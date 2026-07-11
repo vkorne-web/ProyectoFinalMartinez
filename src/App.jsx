@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContainer from "./components/CartContainer";
+import CheckoutForm from "./components/CheckoutForm";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
               <Route
                 path="/cart"
                 element={<CartContainer />}
+              />
+              <Route
+                path="/checkout"
+                element={<CheckoutForm />}
               />
               <Route
                 path="*"

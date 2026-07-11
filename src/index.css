@@ -650,3 +650,140 @@ body {
   justify-content: center;
   line-height: 1;
 }
+
+/* ===== Checkout ===== */
+.checkout-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.checkout-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.checkout-summary {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.checkout-summary h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.checkout-summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.checkout-summary-total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.form-group input {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--sans);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+}
+
+.form-error {
+  color: #cc0000;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.checkout-btn {
+  background: var(--accent);
+  color: var(--text-light);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background: #e94560;
+}
+
+.checkout-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkout-success {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.checkout-success h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.order-id {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--bg-light);
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  margin: 1rem 0 1.5rem;
+  letter-spacing: 1px;
+  word-break: break-all;
+}

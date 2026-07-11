@@ -1,8 +1,9 @@
 ﻿import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import CartItem from "./CartItem";
 
 const CartContainer = () => {
-  const { cartItems, removeItem, clearCart, getTotalQuantity } = useCart();
+  const { cartItems, removeItem, clearCart, getTotalQuantity, getTotalPrice } = useCart();
   const totalQty = getTotalQuantity();
 
   if (totalQty === 0) {
@@ -17,31 +18,14 @@ const CartContainer = () => {
     );
   }
 
-  const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalPrice = getTotalPrice();
 
   return (
     <div className="cart-container">
       <h2 className="cart-title">Carrito de compras</h2>
       <div className="cart-items">
         {cartItems.map((item) => (
-          <div key={item.id} className="cart-item">
-            <img src={item.image} alt={item.title} className="cart-item-img" />
-            <div className="cart-item-info">
-              <h4>{item.title}</h4>
-              <p>Categoria: {item.category}</p>
-              <p>Cantidad: {item.quantity}</p>
-              <p className="cart-item-price">$ {(item.price * item.quantity).toFixed(2)}</p>
-            </div>
-            <button
-              className="cart-item-remove"
-              onClick={() => removeItem(item.id)}
-            >
-              Eliminar
-            </button>
-          </div>
+          <CartItem key={item.id} item={item} />
         ))}
       </div>
       <div className="cart-summary">
@@ -52,6 +36,9 @@ const CartContainer = () => {
           <button className="clear-cart-btn" onClick={clearCart}>
             Vaciar carrito
           </button>
+          <Link to="/checkout" className="checkout-link">
+            Finalizar compra
+          </Link>
           <Link to="/" className="back-link">Seguir comprando</Link>
         </div>
       </div>
